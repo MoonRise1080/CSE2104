@@ -98,9 +98,10 @@ void insert_at(int val, int replacement)
         insert_first(val);
         return;
     }
-    else if(root -> data == val)
+    else if(root -> data == replacement)
     {
-        root -> data = val;
+        insert_first(val);
+        return;
     }
     while(curr_node != NULL)
     {
