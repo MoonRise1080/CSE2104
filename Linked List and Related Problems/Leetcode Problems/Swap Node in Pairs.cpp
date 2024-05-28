@@ -80,11 +80,16 @@ void insert_at(int val, int replacement)
         insert_first(val);
         return;
     }
+    else if(root -> data == replacement)
+    {
+        insert_first(val);
+        return;
+    }
     while(curr_node != NULL)
     {
         prev_node = curr_node;
         curr_node = curr_node -> next;
-        if(prev_node -> data == replacement)
+        if(curr_node -> data == replacement)
         {
             prev_node -> next = temp;
             temp -> next = curr_node;
@@ -201,22 +206,19 @@ void Reverse_Printing(node *curr_node)
     }
 }
 
-void Reverse_n_nodes(int val)
+void Swap_node_in_pair()
 {
-    node *curr_node = root;
+    node *prev_node = root;
+    node *curr_node;
     int temp;
 
-    if(root == NULL)
+    while(prev_node != NULL)
     {
-        return;
-    }
-
-    for(int i = 0; i < val; i++)
-    {
+        curr_node = prev_node -> next;
         temp = curr_node -> data;
         delete_at(temp);
-        insert_first(temp);
-        curr_node = curr_node -> next;
+        insert_at(temp, prev_node -> data);
+        prev_node = prev_node -> next;
     }
 }
 
@@ -229,9 +231,6 @@ int main()
     insert_last(5);
     insert_last(6);
 
-    Reverse_n_nodes(3);
-
+    Swap_node_in_pair();
     Printing();
-
-    return 0;
 }

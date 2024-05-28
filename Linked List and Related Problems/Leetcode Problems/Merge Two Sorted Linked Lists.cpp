@@ -92,4 +92,6 @@ int main()
     cout << "Merged Linked List:" << endl;
     Merge_list(root1, root2);
     Printing(sorted_node);
+
+    return 0;
 }
